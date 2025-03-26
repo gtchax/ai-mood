@@ -1,40 +1,40 @@
 "use client"
 import React from "react"
-import { FormProvider, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { SignIn } from "@clerk/nextjs"
+// import { FormProvider, useForm } from "react-hook-form"
+// import { zodResolver } from "@hookform/resolvers/zod"
+// import * as z from "zod"
+// import {
+//   FormControl,
+//   FormField,
+//   FormItem,
+//   FormLabel,
+//   FormMessage,
+// } from "@/components/ui/form"
+// import { Input } from "@/components/ui/input"
+// import { Button } from "@/components/ui/button"
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+// import { Separator } from "@/components/ui/separator"
 // import { GitHubLogoIcon } from "react-icons"
-import { FaGoogle } from "react-icons/fa"
+// import { FaGoogle } from "react-icons/fa"
 // Form schema
-const formSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-})
+// const formSchema = z.object({
+//   email: z.string().email("Invalid email address"),
+//   password: z.string().min(8, "Password must be at least 8 characters"),
+// })
 
-const SignIn = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  })
+const SignInPage = () => {
+//   const form = useForm<z.infer<typeof formSchema>>({
+//     resolver: zodResolver(formSchema),
+//     defaultValues: {
+//       email: "",
+//       password: "",
+//     },
+//   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    // Handle login logic here
-  }
+//   function onSubmit(values: z.infer<typeof formSchema>) {
+//     console.log(values)
+//   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-950 flex items-center justify-center p-4">
@@ -43,9 +43,8 @@ const SignIn = () => {
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div> */}
-
-      <Card className="w-full max-w-md bg-gray-800/50 backdrop-blur-sm border border-gray-700 shadow-lg relative overflow-hidden">
-        {/* Glow effect */}
+      {/* <Card className="w-full max-w-md bg-gray-800/50 backdrop-blur-sm border border-gray-700 shadow-lg relative overflow-hidden">
+    
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
 
         <CardHeader className="space-y-1">
@@ -140,9 +139,10 @@ const SignIn = () => {
             </a>
           </p>
         </CardContent>
-      </Card>
+      </Card> */}
+      <SignIn />
     </div>
   )
 }
 
-export default SignIn
+export default SignInPage

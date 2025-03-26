@@ -1,57 +1,57 @@
 "use client"
 import React from "react"
-import { FormProvider, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card"
-import { FaGoogle, FaGithub } from "react-icons/fa"
+import { SignUp } from "@clerk/nextjs"
+// import { FormProvider, useForm } from "react-hook-form"
+// import { zodResolver } from "@hookform/resolvers/zod"
+// import * as z from "zod"
+// import {
+//   FormControl,
+//   FormField,
+//   FormItem,
+//   FormLabel,
+//   FormMessage,
+// } from "@/components/ui/form"
+// import { Input } from "@/components/ui/input"
+// import { Button } from "@/components/ui/button"
+// import {
+//   Card,
+//   CardContent,
+//   CardHeader,
+//   CardTitle,
+//   CardDescription,
+// } from "@/components/ui/card"
+// import { FaGoogle, FaGithub } from "react-icons/fa"
 // Form schema
-const formSchema = z
-  .object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    email: z.string().email("Invalid email address"),
-    password: z
-      .string()
-      .min(8, "Password must be at least 8 characters")
-      .regex(/[A-Z]/, "Must contain at least one uppercase letter")
-      .regex(/[0-9]/, "Must contain at least one number"),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  })
+// const formSchema = z
+//   .object({
+//     name: z.string().min(2, "Name must be at least 2 characters"),
+//     email: z.string().email("Invalid email address"),
+//     password: z
+//       .string()
+//       .min(8, "Password must be at least 8 characters")
+//       .regex(/[A-Z]/, "Must contain at least one uppercase letter")
+//       .regex(/[0-9]/, "Must contain at least one number"),
+//     confirmPassword: z.string(),
+//   })
+//   .refine((data) => data.password === data.confirmPassword, {
+//     message: "Passwords don't match",
+//     path: ["confirmPassword"],
+//   })
 
-const SignUp = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  })
+const Page = () => {
+  //   const form = useForm<z.infer<typeof formSchema>>({
+  //     resolver: zodResolver(formSchema),
+  //     defaultValues: {
+  //       name: "",
+  //       email: "",
+  //       password: "",
+  //       confirmPassword: "",
+  //     },
+  //   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    // Handle signup logic here
-  }
+  //   function onSubmit(values: z.infer<typeof formSchema>) {
+  //     console.log(values)
+  //   }
 
   return (
     <div className="min-h-screen bg-grid-gray-900/[0.04] bg-[#191919] flex items-center justify-center p-4 relative overflow-hidden">
@@ -61,8 +61,8 @@ const SignUp = () => {
         <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div> */}
 
-      <Card className="w-full max-w-md bg-gray-900/80 backdrop-blur-sm border border-gray-800 shadow-xl relative z-10">
-        {/* Header */}
+      {/* <Card className="w-full max-w-md bg-gray-900/80 backdrop-blur-sm border border-gray-800 shadow-xl relative z-10">
+       
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
             Create your AI-Mood account
@@ -73,7 +73,7 @@ const SignUp = () => {
         </CardHeader>
 
         <CardContent className="grid gap-4">
-          {/* OAuth Providers */}
+        
           <div className="grid grid-cols-2 gap-2">
             <Button
               variant="outline"
@@ -102,7 +102,7 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* Sign Up Form */}
+          
           <FormProvider {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -212,12 +212,13 @@ const SignUp = () => {
         </CardContent>
       </Card>
 
-      {/* Footer */}
+     
       <div className="absolute bottom-4 left-0 right-0 text-center text-xs text-gray-600">
         © {new Date().getFullYear()} AI-Mood. All rights reserved.
-      </div>
+      </div> */}
+      <SignUp />
     </div>
   )
 }
 
-export default SignUp
+export default Page
