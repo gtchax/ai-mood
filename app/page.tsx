@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { FiArrowRight, FiLock, FiBarChart2, FiActivity } from "react-icons/fi"
 
 export default function Home() {
@@ -25,9 +26,12 @@ export default function Home() {
             Pricing
           </a>
         </div>
-        <button className="px-4 py-2 rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition">
+        <Link
+          href="/sign-in"
+          className="cursor-pointer px-4 py-2 rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition"
+        >
           Sign Up Free
-        </button>
+        </Link>
       </nav>
 
       {/* Hero Section */}
