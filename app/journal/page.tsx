@@ -35,7 +35,7 @@ const getEntries = async () => {
 
 export default async function Page() {
   const { entries, name } = await getEntries()
-  console.log(entries)
+  
   return (
     <SidebarProvider
       style={
@@ -71,9 +71,11 @@ export default async function Page() {
           </Breadcrumb> */}
         </header>
         <div className="flex flex-1  flex-col gap-4 p-4 pt-0">
+          <NewEntryCard />
           <div className="grid grid-cols-3 gap-4">
-            <NewEntryCard />
-            {entries.map(entry => (<EntryCard key={entry.id} entry={entry}/>))}
+            {entries.map((entry) => (
+              <EntryCard key={entry.id} entry={entry} />
+            ))}
           </div>
           {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <div className="aspect-video rounded-xl bg-muted/50" />
