@@ -217,7 +217,7 @@ const Page = () => {
         © {new Date().getFullYear()} AI-Mood. All rights reserved.
       </div> */}
       <SignUp
-        afterSignUpUrl="/journal"
+        afterSignUpUrl="/new-user"
         appearance={{
           elements: {
             rootBox: "w-full max-w-md",

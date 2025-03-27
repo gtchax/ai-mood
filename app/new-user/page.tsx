@@ -15,6 +15,7 @@ const createNewUser = async () => {
     await prisma.user.create({
         data: {
             clerkId: user?.id as string,
+            name: user?.fullName as string,
             email: user?.emailAddresses[0].emailAddress as string
         }
     })

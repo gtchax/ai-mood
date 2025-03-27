@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/general/ThemeToggle"
 import { UserButton } from "@clerk/nextjs"
 import { auth } from "@clerk/nextjs/server"
 import Link from "next/link"
@@ -35,6 +36,7 @@ export default async function Home() {
           <UserButton />
         ) : (
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Link
               href="/sign-in"
               className="border w-24 text-center cursor-pointer px-4 py-2 rounded-md font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition"
