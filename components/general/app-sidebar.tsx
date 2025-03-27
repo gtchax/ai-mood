@@ -1,6 +1,7 @@
+'use client'
 import * as React from "react"
 import { GalleryVerticalEnd } from "lucide-react"
-
+import { useUser } from "@clerk/nextjs"
 import {
   Sidebar,
   SidebarContent,
@@ -43,13 +44,9 @@ const data = {
   ],
 }
 
-interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
-  name: string
-}
 
-
-export function AppSidebar({ name, ...props }: AppSidebarProps) {
- 
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useUser()
   return (
     <Sidebar variant="floating" {...props}>
       <SidebarHeader>
@@ -61,7 +58,7 @@ export function AppSidebar({ name, ...props }: AppSidebarProps) {
                   <GalleryVerticalEnd className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Hi, {name}</span>
+                  <span className="font-semibold">Hi, {user?.firstName}</span>
                   {/* <span className="">Journal</span> */}
                 </div>
               </a>
