@@ -10,6 +10,7 @@ import { prisma } from "@/utils/db"
 import { UserButton } from "@clerk/nextjs"
 import NewEntryCard from "./_components/NewEntryCard"
 import EntryCard from "./_components/EntryCard"
+import Link from "next/link"
 
 const getEntries = async () => {
   const user = await getUserByClerkID()
@@ -25,8 +26,8 @@ const getEntries = async () => {
 }
 
 export default async function Page() {
-  const { entries, name} = await getEntries()
-  
+  const { entries, name } = await getEntries()
+
   return (
     <SidebarProvider
       style={
@@ -51,7 +52,9 @@ export default async function Page() {
           <NewEntryCard />
           <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4">
             {entries.map((entry) => (
-              <EntryCard key={entry.id} entry={entry} />
+              <Link href={`/journal/${entry.id}`} key={entry.id}>
+                <EntryCard entry={entry} />
+              </Link>
             ))}
           </div>
         </div>

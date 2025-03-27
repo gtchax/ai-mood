@@ -4,9 +4,11 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
-  CardFooter,
+  // CardFooter,
 } from "@/components/ui/card"
-import { CalendarDays, Clock, BrainCircuit } from "lucide-react"
+import { CalendarDays, Clock, 
+  // BrainCircuit
+ } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 
@@ -66,13 +68,13 @@ const EntryCard = ({ entry }: EntryCardProps) => {
 
       <Separator />
 
-      <CardContent className="pt-4">
+      <CardContent className="">
         <p className="line-clamp-3 text-sm">{entry.content}</p>
       </CardContent>
 
-      <Separator />
+      {/* <Separator /> */}
 
-      <CardFooter className="flex flex-col items-start gap-2 pt-4">
+      {/* <CardFooter className="flex flex-col items-start gap-2 pt-4">
         <div className="flex items-center gap-2 text-sm">
           <BrainCircuit className="h-4 w-4 text-purple-500" />
           <span className="font-medium">Analysis</span>
@@ -87,7 +89,7 @@ const EntryCard = ({ entry }: EntryCardProps) => {
             <p>{entry.analysis?.sentimentScore?.toFixed(2) || "0.00"}</p>
           </div>
         </div>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   )
 }
