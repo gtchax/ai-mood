@@ -10,7 +10,26 @@ import { CalendarDays, Clock, BrainCircuit } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 
-const EntryCard = ({ entry }) => {
+type Analysis = {
+  subject?: string
+  mood?: string
+  sentiment?: string
+  sentimentScore?: number
+  color?: string
+  negative?: boolean
+}
+
+type Entry = {
+  id: string
+  content: string
+  createdAt: string | Date
+  analysis?: Analysis
+}
+
+interface EntryCardProps {
+  entry: Entry
+}
+const EntryCard = ({ entry }: EntryCardProps) => {
   const date = new Date(entry.createdAt).toLocaleDateString()
   const time = new Date(entry.createdAt).toLocaleTimeString([], {
     hour: "2-digit",
@@ -26,7 +45,7 @@ const EntryCard = ({ entry }) => {
           </CardTitle>
           <Badge
             variant={
-              entry.analysis?.sentimentScore >= 0.5 ? "default" : "destructive"
+              entry.analysis?.sentimentScore as number >= 0.5 ? "default" : "destructive"
             }
           >
             {entry.analysis?.sentiment || "Neutral"}
