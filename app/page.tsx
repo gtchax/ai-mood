@@ -1,7 +1,12 @@
+import { UserButton } from "@clerk/nextjs"
+import { auth } from "@clerk/nextjs/server"
 import Link from "next/link"
 import { FiArrowRight, FiLock, FiBarChart2, FiActivity } from "react-icons/fi"
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth()
+  const href = userId ? "/journal" : "/new-user"
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-950 text-gray-100 font-sans overflow-x-hidden">
       {/* Glowing background elements */}
@@ -26,12 +31,24 @@ export default function Home() {
             Pricing
           </a>
         </div>
-        <Link
-          href="/sign-in"
-          className="cursor-pointer px-4 py-2 rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition"
-        >
-          Sign Up Free
-        </Link>
+        {userId ? (
+          <UserButton />
+        ) : (
+          <div className="flex items-center gap-4">
+            <Link
+              href="/sign-in"
+              className="border w-24 text-center cursor-pointer px-4 py-2 rounded-md font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition"
+            >
+              Login
+            </Link>
+            <Link
+              href="/sign-up"
+              className="cursor-pointer px-4 py-2 rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -49,9 +66,12 @@ export default function Home() {
             intelligent journaling powered by AI.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="px-8 py-3 rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition flex items-center gap-2">
+            <Link
+              href={href}
+              className="px-8 py-3 rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition flex items-center gap-2"
+            >
               Start Journaling <FiArrowRight />
-            </button>
+            </Link>
             <button className="px-8 py-3 rounded-md border border-gray-700 text-gray-300 hover:border-cyan-400 hover:text-cyan-400 transition">
               See Demo
             </button>

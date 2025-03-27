@@ -216,7 +216,29 @@ const Page = () => {
       <div className="absolute bottom-4 left-0 right-0 text-center text-xs text-gray-600">
         © {new Date().getFullYear()} AI-Mood. All rights reserved.
       </div> */}
-      <SignUp />
+      <SignUp
+        afterSignUpUrl="/journal"
+        appearance={{
+          elements: {
+            rootBox: "w-full max-w-md",
+            card: "bg-gray-900/80 backdrop-blur-sm border border-gray-800 shadow-xl",
+            headerTitle:
+              "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500",
+            headerSubtitle: "text-gray-400",
+            socialButtonsBlockButton:
+              "bg-gray-800 hover:bg-gray-700 border-gray-700 text-gray-200",
+            dividerLine: "bg-gray-800",
+            dividerText: "text-gray-500",
+            formFieldLabel: "text-gray-300",
+            formFieldInput:
+              "bg-gray-800 border-gray-700 text-gray-200 focus:ring-2 focus:ring-cyan-500/50",
+            formButtonPrimary: "bg-blue-600",
+            //   "bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 border-cyan-500",
+            footerActionText: "text-gray-500",
+            footerActionLink: "text-cyan-400 hover:underline",
+          },
+        }}
+      />
     </div>
   )
 }

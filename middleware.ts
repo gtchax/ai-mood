@@ -1,6 +1,29 @@
-import { clerkMiddleware } from "@clerk/nextjs/server"
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server"
+import { NextResponse } from "next/server"
 
-export default clerkMiddleware()
+const isPublicRoute = createRouteMatcher([
+  "/",
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  // Optional: Add other public routes here
+  // '/api/webhook(.*)',
+])
+
+export default clerkMiddleware(async (auth, req) => {
+  const isAuthRoute =
+    req.nextUrl.pathname.startsWith("/sign-in") ||
+    req.nextUrl.pathname.startsWith("/sign-up")
+
+  // If user is authenticated and trying to access auth routes, redirect to home
+  const { userId } = await auth()
+  
+  if (isAuthRoute && userId) {
+    return NextResponse.redirect(new URL("/", req.url))
+  }
+  if (!isPublicRoute(req)) {
+    await auth.protect()
+  }
+})
 
 export const config = {
   matcher: [
