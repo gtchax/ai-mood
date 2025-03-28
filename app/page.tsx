@@ -33,7 +33,15 @@ export default async function Home() {
           </a>
         </div>
         {userId ? (
-          <UserButton />
+          <div className="flex items-center gap-4">
+            <UserButton />
+            <Link
+              href="/journal"
+              className="cursor-pointer px-4 py-2 rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/30 transition"
+            >
+              My Journal
+            </Link>
+          </div>
         ) : (
           <div className="flex items-center gap-4">
             <ThemeToggle />

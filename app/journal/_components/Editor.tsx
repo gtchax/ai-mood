@@ -133,7 +133,7 @@ const Editor = ({ entry }: EntryCardProps) => {
           id="editor-textarea"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full h-full outline-none resize-none text-lg leading-relaxed"
+          className="w-full h-[80vh] outline-none resize-none text-lg leading-relaxed"
           placeholder="Write your thoughts here..."
         />
       </div>
